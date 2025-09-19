@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rex Runner</title>
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="shortcut icon" href="icon.png" type="image/x-icon">
+
+</head>
+<body>
+
+<div class="game-container">
+  <div id="snow"></div>
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+  <div id="score-container" style="color: red">Pontuação: <span id="score">0</span></div>
+  <div id="game-over-screen">
+    <h2>Game Over</h2>
+    <p>Sua pontuação final: <span id="final-score">0</span></p>
+    <button id="restartButton">Reiniciar</button>
+  </div>
+  <button id="musicToggle">🎵 Música: ON</button>
+  <audio id="bgMusic" src="./src/Song.mp3" loop></audio>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
