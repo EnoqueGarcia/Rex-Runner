@@ -234,9 +234,21 @@ function gameLoop(){
   requestAnimationFrame(gameLoop);
 }
 
-/* CONTROLES */
+/* CONTROLE NO PC */
 document.addEventListener('keydown', e => {
   if (e.code === 'Space' && !character.isJumping && !isGameOver){
+    character.isJumping = true;
+    character.velocityY = -15;
+    jumpSound.currentTime = 0;
+    jumpSound.play();
+  }
+});
+
+
+/* CONTROLE NO CELULAR */
+
+document.addEventListener('touchstart', () => {
+  if (!character.isJumping && !isGameOver){
     character.isJumping = true;
     character.velocityY = -15;
     jumpSound.currentTime = 0;
