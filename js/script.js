@@ -129,7 +129,7 @@ function startGame(){
 
   if(musicOn){
     bgMusic.currentTime = 0;
-    bgMusic.play().catch(()=>console.log("Toque qualquer tecla para iniciar o áudio"));
+    bgMusic.play().catch(()=>console.log("Áudio aguardando interação do usuário..."));
   }
 
   requestAnimationFrame(gameLoop);
@@ -168,7 +168,6 @@ function gameLoop(){
       score++;
       scoreDisplay.textContent = score;
 
-      // Mudança de estágio e velocidade
       if (score === 20){
         canvas.style.backgroundImage = "url('./src/stage2.png')";
         gameSpeed = 6;
@@ -183,29 +182,29 @@ function gameLoop(){
       }
       if (score === 80){
         canvas.style.backgroundImage = "url('./src/stage5.png')";
-        createSnowflakes(80, "white"); // neve branca
+        createSnowflakes(80, "white");
         gameSpeed = 15;
       }
       if (score === 100){
         canvas.style.backgroundImage = "url('./src/stage6.png')";
-        createSnowflakes(80, "red"); // neve vermelha (cinzas do vulcão)
+        createSnowflakes(80, "red");
         gameSpeed = 18;
       }
       if (score === 120){
         canvas.style.backgroundImage = "url('./src/stage7.png')";
-        createSnowflakes(100, "red"); // neve vermelha (cinzas do vulcão)
+        createSnowflakes(100, "red");
         gameSpeed = 25;
       }
 
-      // Encerrar jogo ao atingir 100 pontos
+      // Encerrar jogo ao atingir 140 pontos
       if (score >= 140 ){
         isGameOver = true;
         finalScoreDisplay.textContent = score;
         gameOverScreen.querySelector("h2").textContent = "Parabéns!";
         gameOverScreen.querySelector("p").textContent = "Você completou o jogo!";
         gameOverScreen.classList.add('show');
-          bgMusic.pause();
-  bgMusic.currentTime = 0;
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
         return;
       }
     }
@@ -244,9 +243,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-
-/* CONTROLE NO CELULAR POR TOQUE NA TELA  */
-
+/* CONTROLE NO CELULAR */
 document.addEventListener('touchstart', () => {
   if (!character.isJumping && !isGameOver){
     character.isJumping = true;
@@ -269,6 +266,19 @@ musicToggle.addEventListener("click", () => {
     musicToggle.textContent = "🎵 Música: OFF";
   }
 });
+
+/* 🔊 Desbloqueio do áudio na primeira interação */
+function unlockAudio() {
+  if (musicOn) {
+    bgMusic.play().catch(err => console.log("Erro ao iniciar áudio:", err));
+  }
+  document.removeEventListener("click", unlockAudio);
+  document.removeEventListener("keydown", unlockAudio);
+  document.removeEventListener("touchstart", unlockAudio);
+}
+document.addEventListener("click", unlockAudio);
+document.addEventListener("keydown", unlockAudio);
+document.addEventListener("touchstart", unlockAudio);
 
 /* INÍCIO */
 startGame();
