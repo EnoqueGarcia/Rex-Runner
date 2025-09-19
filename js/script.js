@@ -245,7 +245,7 @@ document.addEventListener('keydown', e => {
 });
 
 
-/* CONTROLE NO CELULAR */
+/* CONTROLE NO CELULAR POR TOQUE NA TELA  */
 
 document.addEventListener('touchstart', () => {
   if (!character.isJumping && !isGameOver){
