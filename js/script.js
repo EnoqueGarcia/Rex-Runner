@@ -32,7 +32,7 @@ const jumpSound = new Audio("./src/Jump.mp3");
 const obstacleTypes = [  
   { src: './src/cacto.png', minH: 100, maxH: 80, minW: 40, maxW: 40 },
   { src: './src/osso.png', minH: 80, maxH: 80, minW: 80, maxW: 80 },
-  { src: './src/pedra.png', minH: 80, maxH: 80, minW: 100 , maxW: 100 },
+  { src: './src/pedra2.png', minH: 80, maxH: 80, minW: 100 , maxW: 100 },
   { src: './src/cobra.png', minH: 70, maxH: 70, minW: 60, maxW: 60 },
   { src: './src/espinhos.png', minH: 55, maxH: 55, minW: 80, maxW: 80 }
 ];
